@@ -42,10 +42,10 @@ if IniRead(A_ScriptDir "\pref\Settings.ini", "Start", "FirstRun") = true{
     IniWrite(false, iniPath, "Start", "FirstRun")
 }
 else{
-    Def_File := iniRead(iniPath, "Folders", "D_File", A_ScriptDir "ahk2.d.ahk")
-    Json_File := iniRead(iniPath, "Folders", "J_File", A_ScriptDir "ahk2.json")
-    D_FileSize := FileGetSize(Def_File)
-    J_FileSize := FileGetSize(Json_File)
+    Def_File := iniRead(iniPath, "Folders", "D_File", A_ScriptDir "\ahk2.d.ahk")
+    Json_File := iniRead(iniPath, "Folders", "J_File", A_ScriptDir "\ahk2.json")
+    D_FileSize := FileGetSize(Def_File ?? A_ScriptDir "\ahk2.d.ahk")
+    J_FileSize := FileGetSize(Json_File ?? A_ScriptDir "\ahk2.json")
 }
 
 DriveLetter := StrSplit(A_ProgramFiles, ":", 1)[1]
