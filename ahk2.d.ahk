@@ -18839,7 +18839,14 @@ GetKeySC(KeyName) => Integer
  * {@link https://www.autohotkey.com/docs/v2/lib/_UseHook.htm|#UseHook} |
  * {@link https://www.autohotkey.com/docs/v2/misc/RemapController.htm|Controller remapping} |
  * {@link https://www.autohotkey.com/docs/v2/KeyList.htm|Key List} |
- * @example <caption></caption>  
+ * @example 
+ * ;N = 0 if Shift is off, 1 if Shift is on 
+ * GetKeyState('Shift') => 0 
+ * ;N = 0 if the Ctrl key is physically up, 1 if the Ctrl key is physically down
+ * GetKeyState('Ctrl', 'P') => 0 
+ * N = ;if CapsLock is toggled off, 1 if CapsLock is toggled on
+ * GetKeyState('CapsLock', 'T') => 0 
+ *
  */
 GetKeyState(KeyName [,Mode]) => String
 
@@ -22994,11 +23001,11 @@ SetTimer([Callback:=unset, Period:=250, Priority:=0]) => EmptyString
 /**
  * @description {@link https://www.autohotkey.com/docs/v2/lib/SetTitleMatchMode.htm|`SetTitleMatchMode()`}  
  * Sets the matching behavior of the WinTitle parameter in built-in functions such as WinWait.  
- * @param {'1'|'2'|'3'|'RegEx'|'Fast'|'Slow'|Integer} ModeOrSpeed  
+ * @param {'1'|'2'|'3'|'RegEx'|'Fast'|'Slow'|Integer} ModeOrSpeed 
  * - **Mode:** How the title uses the provided text.  
  *   The current value is stored in {@link https://www.autohotkey.com/docs/v2/Variables.htm#TitleMatchMode|A_TitleMatchMode}  
  *   - `1` = Title must start with specified text.  
- *   - `2` = Title must contain the specified text.  
+ *   - `2` = Title must contain the specified text. (Default)  
  *   - `3` = Title must exactly match specified text.  
  *   - `RegEx` = Title is treated as a RegEx pattern.  
  *     The window matches if the RegEx evalutes true.  
